@@ -21,20 +21,14 @@ async function getData() {
     }
 }
 
-//Functie voor het aanmaken van de elementen
+//Functie voor het aanmaken van de elementen in een landContainer
 function makeElement(data) {
-    //Aanmaken landContainer en geef regionaam hieraan mee als class
+    //Aanmaken landContainer en geef 'container' als class
     const landContainer = document.createElement('div')
     landContainer.setAttribute('class', 'container')
 
-    //Aanmaken element voor de vlag en de vlag invoegen en flag class maken
     createFlagElement(data, landContainer)
-
-    //Aanmaken element voor de naam van het land en deze tekst geven en deze invoegen in de container en regio als class
-    //Vervolgens met een andere functie de kleur van de tekst bepalen
     createNameElement(data, landContainer)
-
-    //Aanmaken element voor de populatie tekst en invoeren. Class = population
     createPopulationElement(data, landContainer)
 
     //Toevoegen van de landContainer aan de container
@@ -46,7 +40,7 @@ function makeElement(data) {
 function createFlagElement(data, container) {
     //Nieuw IMG element aanmaken
     const flag = document.createElement('img')
-    //Element de classe 'flag' geven
+    //Element de class 'flag' geven
     flag.setAttribute('class', 'flag')
     //Element de link naar de vlag toewijzen
     flag.setAttribute("src", data.flag);
