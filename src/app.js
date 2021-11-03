@@ -1,7 +1,7 @@
 import axios from 'axios'
 
-//Asynchrone functie data ophalen en sorteren en vanuit deze functie de elementen opbouwen
-async function buildPage() {
+//Asynchrone functie data ophalen en sorteren
+async function getData() {
 
     //Proberen, als het ophalen van de data niet lukt, moet het niet zo zijn dat de site/script vastloopt.
     try {
@@ -10,14 +10,11 @@ async function buildPage() {
         const data = response.data
 
         //Data sorteren op populatie
-        const sortedData = data.sort(function(a,b) {
+        data.sort(function(a,b) {
             return a['population'] - b['population']
         })
+        return data
 
-        //Voor elk land een element aanmaken met daarin de gegevens
-        for (let i = 0; i < data.length; i++) {
-            makeElement(sortedData[i])
-        }
     //Als er een error is, deze afvangen en loggen in de console.
     } catch (e) {
         console.error(e)
@@ -30,7 +27,6 @@ function makeElement(data) {
     const landContainer = document.createElement('div')
     landContainer.setAttribute('class', 'container')
 
-
     //Aanmaken element voor de vlag en de vlag invoegen en flag class maken
     createFlagElement(data, landContainer)
 
@@ -42,8 +38,8 @@ function makeElement(data) {
     createPopulationElement(data, landContainer)
 
     //Toevoegen van de landContainer aan de container
-    const container = document.getElementById('lands')
-    container.appendChild(landContainer)
+    const mainContainer = document.getElementById('lands')
+    mainContainer.appendChild(landContainer)
 }
 
 
@@ -102,5 +98,9 @@ function setRegionColor(data) {
     }
 }
 
-//Hoofdfunctie oproepen
-buildPage()
+//Data opvragen, als dit klaar is; elementen aanmaken met daarin de gegevens
+getData().then(data =>  {
+    for (let i = 0; i < data.length; i++) {
+        makeElement(data[i])
+    }
+})
