@@ -11,7 +11,7 @@ async function getData() {
 
         //Data sorteren op populatie
         data.sort(function(a,b) {
-            return a['population'] - b['population']
+            return a.population - b.population
         })
         return data
 
@@ -65,7 +65,7 @@ function createPopulationElement(data, container) {
     //Nieuw p element maken
     const population = document.createElement('p')
     //Tekst aan het element toevoegen. Hierbij data['population'] als variabele waarde
-    population.innerHTML = 'Has a population of ' + data['population'] + ' people'
+    population.innerHTML = 'Has a population of ' + data.population + ' people'
     //Vervolgens class : 'population' toewijzen
     population.setAttribute('class', 'population')
     //Element aan container voor het land toevoegen
