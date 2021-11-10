@@ -115,24 +115,28 @@ async function getSpecificData(name) {
         //Data ophalen en in juiste format zetten
         const result = await axios.get(`https://restcountries.com/v2/name/${name}`)
         const data = result.data[0]
-        makeLandElement(data)
+
+        await makeLandElement(data)
 
         //Als er een error is, deze afvangen en loggen in de console.
     } catch (e) {
-        console.log(e)
+        console.error(e)
+        if (e instanceof TypeError) {
+            window.alert('Verkeerde landnaam ingevoerd')
+        }
 
     }
 }
 
 function makeLandElement(data) {
-    console.log(data)
     const landElement = document.getElementById('land-data')
+    const {name, subregion, population, capital, currencies, languages} = data;
     landElement.innerHTML =
         `
-         <p class="name"><img src="${data.flag}" class="flag" alt="flag"><img/> ${data.name}</p>
-         <p class="info">${data.name} is situated in ${data.subregion}. It has a population of ${data.population} people. <br/>
-         The capital is ${data.capital} and you can pay with ${getCurrency(data.currencies)} <br/>
-         They speak ${getLanguages(data.languages)}</p>
+         <p class="name"><img src="${data.flag}" class="flag" alt="flag"/> ${data.name}</p>
+         <p class="info">${name} is situated in ${subregion}. It has a population of ${population} people. <br/>
+         The capital is ${capital} and you can pay with ${getCurrency(currencies)} <br/>
+         They speak ${getLanguages(languages)}</p>
          `
 }
 
