@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Country Information - Country selector</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="fonts.css">
+</head>
+<body>
+<a href='index.html' class="navigation-link">Home</a>
+<div id="country-searcher" class="container">
+    <h1 class="title">Let's search some countries</h1>
+    <img src="assets/rotating_world.png" class="country-searcher-img" alt="world"/>
+    <form class='form' id="form" onsubmit="return false">
+        <input type="text" placeholder="Bijvoorbeeld Nederland of Peru" id="search-bar-value">
+        <button type="submit" id="submit-button" class="submit-button">Search</button>
+    </form>
+    <div class='land-data' id="land-data"></div>
+</div>
+<script src="app.js" type="module"></script>
+</body>
+</html>

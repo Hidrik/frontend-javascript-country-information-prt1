@@ -1,53 +1,148 @@
-body{
+/*algemene*/
+:root {
+    --searchColor: hsl(186, 100%, 50%);
+    --borderColor: hsl(218, 100%, 50%);
+    --searchShadowColor : hsl(186, 100%, 25%);
+    --searchShadow : 3px 3px var(--searchShadowColor);
+    --radius : 5px;
+    --fontSize : 20px;
+    --searchBorder : 2px solid var(--searchColor);
+}
+
+.container{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
 }
 
-h1 {
-    font-family:'Irish Grover', cursive;
+.navigation-link {
+    float: left;
+    padding: 5px;
+    background-color: lightgrey;
+    border: 2px solid var(--borderColor);
+    border-radius: calc(var(--radius)*2);
+    color: var(--searchShadowColor);
+    text-decoration: none;
+    font-size: calc(var(--fontSize)*1.2)
+}
+
+.title {
+    font-family:'Irish Grover', cursive, sans-serif;
     font-size: 50px;
-    margin: 0px;
+    margin: 0;
 }
 
-body img {
-    width: 70%;
+/*index.HTML page*/
+
+.main-page-img {
+    width: 1200px;
 }
 
-#lands {
+.lands {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-evenly;
     background-color: lightgrey;
     border: 2px solid grey;
-    border-radius: 5px;
+    border-radius: var(--radius);
     width: 90%;
 }
 
-.container {
+.landContainer {
     margin-top: 30px;
 }
 
-.name {
-    font-size: 25px;
+.names {
+    font-size: calc(var(--fontSize)*1.25);
     width: 550px;
     border: 10px;
-    padding: 0px;
-    margin: 0px;
+    padding: 0;
+    margin: 0;
 }
 
-.flag {
+.flags {
     display: inline;
     width: 50px;
     height: 30px;
-    alt: 'flag';
     float: left;
     margin-right: 10px;
 }
 
 .population {
     margin-top: 10px;
-    margin-left: 0px;
+    margin-left: 0;
+}
+
+/*countrySearch.HTML page*/
+
+.country-searcher-img{
+    width: 300px;
+}
+
+.flag {
+    display: inline;
+    width: 100px;
+}
+
+.name {
+    font-family:'Irish Grover', bolt, sans-serif;
+    font-size: calc(var(--fontSize)*2);
+    margin: 10px;
+}
+
+.form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 700px;
+    box-shadow: var(--searchShadow);
+    border: var(--searchBorder);
+    background-color: var(--searchColor);
+    border-top-left-radius: var(--radius);
+    border-top-right-radius: var(--radius);
+}
+
+.info {
+    margin-left: 10px;
+    font-size: calc(var(--fontSize)*1);
+}
+
+.land-data {
+    background-color: var(--searchColor);
+    border: var(--searchBorder);
+    box-shadow: var(--searchShadow);
+    border-bottom-right-radius: var(--radius);
+    border-bottom-left-radius: var(--radius);
+    width: 700px;
+    visibility: visible;
+}
+
+.land-data:empty {
+    visibility: hidden;
+}
+
+#search-bar-value {
+    width: 85%;
+    height: 40px;
+    border-bottom-left-radius: var(--radius);
+    border-top-left-radius: var(--radius);
+    border-color: var(--searchColor);
+    font-size: calc(var(--fontSize)*1);
+}
+.submit-button {
+    width: 15%;
+    background-color: var(--searchColor);
+    border: var(--searchBorder);
+    border-radius: 5px;
+    color: var(--searchShadowColor);
+    height: 40px;
+    font-size: calc(var(--fontSize)*1.4)
+}
+
+.submit-button:hover {
+    transition: background-color 0.2s ease-in;
+    background-color: hsl(186, 100%, 75%);
 }
