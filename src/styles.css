@@ -20,10 +20,12 @@
 .navigation-link {
     float: left;
     padding: 5px;
-    background-color: var(--searchColor);
+    background-color: lightgrey;
     border: 2px solid var(--borderColor);
-    border-radius: 10px;
-    color: var(--searchShadowColor);;
+    border-radius: calc(var(--radius)*2);
+    color: var(--searchShadowColor);
+    text-decoration: none;
+    font-size: calc(var(--fontSize)*1.2)
 }
 
 .title {
@@ -45,7 +47,7 @@
     justify-content: space-evenly;
     background-color: lightgrey;
     border: 2px solid grey;
-    border-radius: 5px;
+    border-radius: var(--radius);
     width: 90%;
 }
 
@@ -141,5 +143,6 @@
 }
 
 .submit-button:hover {
+    transition: background-color 0.2s ease-in;
     background-color: hsl(186, 100%, 75%);
 }
